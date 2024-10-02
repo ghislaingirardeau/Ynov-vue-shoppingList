@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 const header = ref('Shopping List App')
+const headerId = ref('header')
 const editing = ref(false)
 const items = ref([
   // {id: 1, label: "10 party hats"},
@@ -21,7 +22,7 @@ const doEdit = (e) => {
 </script>
 
 <template>
-  <div class="header">
+  <div :class="headerId">
     <h1>{{ header }}</h1>
     <button v-if="editing" class="btn" @click="doEdit(false)">Cancel</button>
     <button v-else class="btn btn-primary" @click="doEdit(true)">Add Item</button>

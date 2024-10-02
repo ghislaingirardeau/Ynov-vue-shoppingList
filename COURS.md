@@ -58,11 +58,13 @@ Suivi doc - https://vuejs.org/guide/essentials/event-handling.html
 Exo: shopping list
 
 - désactiver le bouton si text taper par utilisateur fait moins de 5 caractères
-- utiliser une variable dans le placeholder
+- bind le placeholder avec une variable `placeholder`
+- bind div class header avec une variable `headerId`
 
 ## 7-Dynamic CSS
 
 Exo: shopping list
+Suivi doc - https://vuejs.org/guide/essentials/event-handling.html
 
 - Ajouter pour chaque objet de item, une propriété 'purchased' qui sera un boolean en false
 - Dans la liste d'item affichée, au click sur un item:
