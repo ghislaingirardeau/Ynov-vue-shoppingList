@@ -1,5 +1,29 @@
 # Vue Js
 
+- [Vue Js](#vue-js)
+  - [Déroulé](#déroulé)
+  - [Découverte de Vue](#découverte-de-vue)
+  - [Syntaxe et expression](#syntaxe-et-expression)
+    - [Options API](#options-api)
+    - [Composition API.](#composition-api)
+  - [1-List Rendering](#1-list-rendering)
+  - [2-User input](#2-user-input)
+  - [3-User Event](#3-user-event)
+  - [4-Methods](#4-methods)
+  - [5-Condition](#5-condition)
+  - [6-HTML binding attribute](#6-html-binding-attribute)
+  - [7-Dynamic CSS](#7-dynamic-css)
+  - [8-Computed](#8-computed)
+  - [9-Watch](#9-watch)
+  - [10-Options : Cycle de vie](#10-options--cycle-de-vie)
+  - [Component](#component)
+    - [Création du component](#création-du-component)
+    - [Props](#props)
+      - [Exo: shopping list](#exo-shopping-list)
+    - [Emits](#emits)
+      - [Exo: shopping list](#exo-shopping-list-1)
+  - [BONUS](#bonus)
+
 ## Déroulé
 
 - présentation
@@ -12,8 +36,8 @@ Jour 4 : Gestion des états - Pinia
 
 Pour chaque notion:
 
-- voit ensemble la notion + exemple
-- exo à pratiquer
+- voit ensemble la notion + exemple + la doc
+- exo à pratiquer en autonomie
 - correction ensemble
 
 2 projets:
@@ -147,10 +171,10 @@ Suivi doc - https://vuejs.org/guide/essentials/event-handling.html
 
 Exo: shopping list
 
-- Ajouter pour chaque objet de item, une propriété 'purchased' qui sera un boolean en false
+- Ajouter pour chaque objet de item, une propriété `purchased` qui sera un boolean en `false`
 - Dans la liste d'item affichée, au click sur un item:
   - changer le boolean par sa valeur opposé (!)
-  - mettre une class dynamic sur chaque item
+  - mettre une class dynamic pour que celle-ci appaissent quand `purchased` est à `true`
 
 ## 8-Computed
 
@@ -158,10 +182,7 @@ Suivi doc - https://fr.vuejs.org/guide/essentials/computed.html#basic-example
 
 Exo: shopping list
 
-- Ajouter pour chaque objet de item, une propriété 'purchased' qui sera un boolean en false
-- Dans la liste d'item affichée, au click sur un item:
-  - changer le boolean par sa valeur opposé (!)
-  - mettre une class dynamic sur chaque item
+- Créer un `computed` qui va nous permettre d'afficher tout en bas de notre liste, le nombre total d'items dans celle-ci type `La liste contient XX items`
 
 ## 9-Watch
 
@@ -256,8 +277,12 @@ https://fr.vuejs.org/guide/components/events.html
 
 #### Exo: shopping list
 
-- Mettre la partie formulaire dans une component: on aura besoin de props, emit et v-model
+- Mettre la partie formulaire dans un component: on aura besoin de props, emit et v-model
 - Ajouter 2 shopping list à la page d'index :
   - chaque shopping list correspondra à un membre de la famille `Tom`, `Marc` et `lea`: il faudra donc lui passer une props !
   - Dupliquer le component dans app.js
   - le bouton high priority, n'est pas assez visible, on va le mettre en gras ! Super besoin de le faire une seule fois et non 3 fois
+
+## BONUS
+
+- Ajouter un input qui gère la quantité pour chaque item => donc dans item avoir une propriété qui contiendra le nombre d'article
