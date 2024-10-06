@@ -162,3 +162,17 @@ Exo: shopping list
 Suivi doc - https://fr.vuejs.org/guide/essentials/computed.html#basic-example
 
 - Quand j'annule ma liste de course celle-ci se vide, mon panier devient 0
+
+## 10-Options : Cycle de vie
+
+Suivi doc - https://fr.vuejs.org/guide/essentials/lifecycle.html
+
+```vue
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  console.log(`the component is now mounted.`)
+})
+</script>
+```

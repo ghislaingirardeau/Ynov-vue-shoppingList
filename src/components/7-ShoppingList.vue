@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, onUpdated, ref, watch } from 'vue'
 
 /* ----------------- DATAS --------------------- */
 
@@ -62,6 +62,17 @@ const doEdit = (e) => {
 const togglePurchased = (item) => {
   item.purchased = !item.purchased
 }
+
+/* ----------------- HOOK CYCLE DE VIE --------------------- */
+onUpdated(() => {
+  console.log('updates: a chaque changement dans le DOM')
+})
+onMounted(() => {
+  console.log('mounted', items.value)
+})
+onUnmounted(() => {
+  console.log('Le composant est detruit: disparait du DOM')
+})
 </script>
 
 <template>
