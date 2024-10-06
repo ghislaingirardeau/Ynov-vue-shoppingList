@@ -239,6 +239,19 @@ function buttonClick() {
 }
 ```
 
+Si je veux juste changer une variable du composant Parent SANS AUTRE LOGIQUE DE LE EMIT, je peux passer par la directive v-model
+
+```js
+// dans le component "parent"
+;<IntroChild v-model="total" />
+
+// dans le component enfant
+const total = defineModel()
+
+// ATTENTION: doit avoir le meme nom !!!
+// dans le component enfant, je peux alors modifier comme je le souhaite le model 'total' sans avoir besoin de faire un emit
+```
+
 https://fr.vuejs.org/guide/components/events.html
 
 #### Exo: shopping list
