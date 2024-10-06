@@ -130,8 +130,9 @@ Exo: shopping list
 
 ## 7-Dynamic CSS
 
-Exo: shopping list
 Suivi doc - https://vuejs.org/guide/essentials/event-handling.html
+
+Exo: shopping list
 
 - Ajouter pour chaque objet de item, une propriété 'purchased' qui sera un boolean en false
 - Dans la liste d'item affichée, au click sur un item:
@@ -140,8 +141,9 @@ Suivi doc - https://vuejs.org/guide/essentials/event-handling.html
 
 ## 8-Computed
 
-Exo: shopping list
 Suivi doc - https://fr.vuejs.org/guide/essentials/computed.html#basic-example
+
+Exo: shopping list
 
 - Ajouter pour chaque objet de item, une propriété 'purchased' qui sera un boolean en false
 - Dans la liste d'item affichée, au click sur un item:
@@ -158,8 +160,9 @@ watch(editing, (nextValue, prevValue) => {
 })
 ```
 
-Exo: shopping list
 Suivi doc - https://fr.vuejs.org/guide/essentials/computed.html#basic-example
+
+Exo: shopping list
 
 - Quand j'annule ma liste de course celle-ci se vide, mon panier devient 0
 
@@ -176,3 +179,55 @@ onMounted(() => {
 })
 </script>
 ```
+
+## Component
+
+### Création du component
+
+Dans le dossier /components
+
+Appeler le component quand on a besoin: soit dans une view, soit dans un autre component
+
+### Props
+
+**Pour passer des variables du composant parent à l'enfant**
+
+- props statique vs props dynamique
+- typage des props
+- Utilisation des props dans le component
+
+```js
+const props = defineProps({
+  foo: String
+})
+```
+
+https://fr.vuejs.org/guide/components/props.html#prop-passing-details
+
+#### Exo: shopping list
+
+- Mettre la carte de la liste dans un component et l'appeler
+- attention à garder notre boucle grace au v-for et passer l'item dans la props
+
+### Emits
+
+**Pour changer une variable du composant parent DEPUIS le composant enfant**
+
+Un composant peut émettre des événements personnalisés directement à partir du template (par exemple, dans un gestionnaire d'événement v-on) à l'aide de la méthode native $emit :
+
+```js
+const emit = defineEmits(['change', 'delete'])
+function buttonClick() {
+  emit('submit')
+}
+```
+
+https://fr.vuejs.org/guide/components/events.html
+
+#### Exo: shopping list
+
+- Mettre la partie formulaire dans une component: on aura besoin de props, emit et v-model
+- Ajouter 2 shopping list à la page d'index :
+  - chaque shopping list correspondra à un membre de la famille `Tom`, `Marc` et `lea`: il faudra donc lui passer une props !
+  - Dupliquer le component dans app.js
+  - le bouton high priority, n'est pas assez visible, on va le mettre en gras ! Super besoin de le faire une seule fois et non 3 fois

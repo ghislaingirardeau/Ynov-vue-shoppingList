@@ -1,9 +1,11 @@
 <script setup>
 import { computed, onMounted, onUnmounted, onUpdated, ref, watch } from 'vue'
+import ListCard from './ListCard.vue'
+import ListForm from './ListForm.vue'
 
 /* ----------------- DATAS --------------------- */
 
-const header = ref('Shopping List App')
+const header = ref('Shopping List for ')
 const editing = ref(false)
 const items = ref([
   {
@@ -28,6 +30,17 @@ const items = ref([
 const newItem = ref('')
 const newItemHighPriority = ref(false)
 
+const newItemForProps = ref({
+  newItem: '',
+  newItemHighPriority: false
+})
+
+/* ----------------- PROPS --------------------- */
+
+const props = defineProps({
+  familyMember: String
+})
+
 /* ----------------- COMPUTED --------------------- */
 
 const countItems = computed(() => {
@@ -47,20 +60,16 @@ watch(editing, (nextValue, prevValue) => {
 const saveItem = () => {
   items.value.push({
     id: items.value.length + 1,
-    label: newItem.value,
-    highPriority: newItemHighPriority.value
+    label: newItemForProps.value.newItem,
+    highPriority: newItemForProps.value.newItemHighPriority
   })
-  newItem.value = ''
-  newItemHighPriority.value = ''
+  newItemForProps.value.newItem = ''
+  newItemForProps.value.newItemHighPriority = ''
 }
 const doEdit = (e) => {
   editing.value = e
-  newItem.value = ''
-  newItemHighPriority.value = ''
-}
-
-const togglePurchased = (item) => {
-  item.purchased = !item.purchased
+  newItemForProps.value.newItem = ''
+  newItemForProps.value.newItemHighPriority = ''
 }
 
 /* ----------------- HOOK CYCLE DE VIE --------------------- */
@@ -77,31 +86,13 @@ onUnmounted(() => {
 
 <template>
   <div class="header">
-    <h1>{{ header }}</h1>
+    <h1>{{ header }} {{ props.familyMember }}</h1>
     <button v-if="editing" class="btn" @click="doEdit(false)">Cancel</button>
     <button v-else class="btn btn-primary" @click="doEdit(true)">Add Item</button>
   </div>
-  <form class="add-item-form" v-if="editing" @submit.prevent="saveItem">
-    <input v-model.trim="newItem" type="text" placeholder="Add an item" />
-    <label>
-      <input type="checkbox" v-model="newItemHighPriority" />
-      High Priority
-    </label>
-    <button :disabled="newItem.length < 5" class="btn btn-primary">Save Item</button>
-  </form>
+  <ListForm v-model="newItemForProps" :editing @saveItem="saveItem" />
   <ul>
-    <li
-      v-for="item in items"
-      @click="togglePurchased(item)"
-      :key="item.id"
-      class="static-class"
-      :class="{
-        strikeout: item.purchased,
-        priority: item.highPriority
-      }"
-    >
-      {{ item.label }}
-    </li>
+    <ListCard v-for="item in items" :key="item.id" :item="item" />
   </ul>
   <p v-if="!items.length">Nothing to see here</p>
   <p>{{ countItems }}</p>

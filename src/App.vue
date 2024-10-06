@@ -2,7 +2,9 @@
   <div>
     <h1>Hello Vue JS</h1>
 
-    <ShoppingList />
+    <ShoppingList familyMember="Tom" />
+    <ShoppingList familyMember="Paul" />
+    <ShoppingList familyMember="Lea" />
   </div>
 </template>
 
