@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+
+/* ----------------- DATAS --------------------- */
 
 const header = ref('Shopping List App')
 const editing = ref(false)
@@ -25,6 +27,23 @@ const items = ref([
 ])
 const newItem = ref('')
 const newItemHighPriority = ref(false)
+
+/* ----------------- COMPUTED --------------------- */
+
+const countItems = computed(() => {
+  return 'You have ' + items.value.length + ' items'
+})
+
+/* ----------------- WATCH --------------------- */
+
+watch(editing, (nextValue, prevValue) => {
+  if (!nextValue) {
+    items.value = []
+  }
+})
+
+/* ----------------- METHODS --------------------- */
+
 const saveItem = () => {
   items.value.push({
     id: items.value.length + 1,
@@ -61,7 +80,7 @@ const togglePurchased = (item) => {
   </form>
   <ul>
     <li
-      v-for="(item, index) in items"
+      v-for="item in items"
       @click="togglePurchased(item)"
       :key="item.id"
       class="static-class"
@@ -74,4 +93,5 @@ const togglePurchased = (item) => {
     </li>
   </ul>
   <p v-if="!items.length">Nothing to see here</p>
+  <p>{{ countItems }}</p>
 </template>
