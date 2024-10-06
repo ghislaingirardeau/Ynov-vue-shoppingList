@@ -1,6 +1,8 @@
 <template>
-  <h2>Compteur</h2>
-  <button @click="count++">Count is: {{ count }}</button>
+  <div>
+    <h2>Compteur</h2>
+    <button @click="count++">Count is: {{ count }}</button>
+  </div>
 </template>
 
 <script setup>

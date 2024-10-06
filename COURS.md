@@ -1,5 +1,7 @@
 # Vue Js
 
+## Déroulé
+
 - présentation
 - Connaissance html, css, js
 
@@ -7,6 +9,17 @@ Jour 1 : Découverte et Syntaxe vue js dans un component
 Jour 2 : Gestion des components
 Jour 3 : Gestion des route - Router
 Jour 4 : Gestion des états - Pinia
+
+Pour chaque notion:
+
+- voit ensemble la notion + exemple
+- exo à pratiquer
+- correction ensemble
+
+2 projets:
+
+- ShoppingList (branche master J1, component J2)
+- Travel App
 
 ## Découverte de Vue
 
@@ -207,7 +220,9 @@ https://fr.vuejs.org/guide/components/props.html#prop-passing-details
 #### Exo: shopping list
 
 - Mettre la carte de la liste dans un component et l'appeler
-- attention à garder notre boucle grace au v-for et passer l'item dans la props
+  - Créer un component avec la base de syntaxe vue js
+  - Dans le template, on va mettre le `li` avec la class et le click mais sans le v-for !
+  - C'est à l'appel du component que l'on va mettre le v-for
 
 ### Emits
 
@@ -219,6 +234,8 @@ Un composant peut émettre des événements personnalisés directement à partir
 const emit = defineEmits(['change', 'delete'])
 function buttonClick() {
   emit('submit')
+  // SI JE VEUX ENVOYER DES PARAMETRES DEDANS LORS DE EMIT
+  emit('submit', 'hello') // ou emit('submit', {...})
 }
 ```
 
