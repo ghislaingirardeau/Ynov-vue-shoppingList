@@ -1,20 +1,45 @@
 # Vue Js
 
+- [Vue Js](#vue-js)
+  - [Déroulé](#déroulé)
+  - [Découverte de Vue](#découverte-de-vue)
+  - [Syntaxe et expression](#syntaxe-et-expression)
+    - [Options API](#options-api)
+    - [Composition API.](#composition-api)
+  - [1-List Rendering](#1-list-rendering)
+  - [2-User input](#2-user-input)
+  - [3-User Event](#3-user-event)
+  - [4-Methods](#4-methods)
+  - [5-Condition](#5-condition)
+  - [6-HTML binding attribute](#6-html-binding-attribute)
+  - [7-Dynamic CSS](#7-dynamic-css)
+  - [8-Computed](#8-computed)
+  - [9-Watch](#9-watch)
+  - [10-Options : Cycle de vie](#10-options--cycle-de-vie)
+  - [Component](#component)
+    - [Création du component](#création-du-component)
+    - [Props](#props)
+      - [Exo: shopping list](#exo-shopping-list)
+    - [Emits](#emits)
+      - [Exo: shopping list](#exo-shopping-list-1)
+
 ## Déroulé
 
 - présentation
 - Connaissance html, css, js
 
-Jour 1 : Découverte et Syntaxe vue js dans un component
-Jour 2 : Gestion des components
-Jour 3 : Gestion des route - Router
-Jour 4 : Gestion des états - Pinia
+- Jour 1 : Découverte et Syntaxe vue js dans un component
+- Jour 2 : Gestion des components
+- Jour 3 : Gestion des route - Router
+- Jour 4 : Gestion des états - Pinia
 
 Pour chaque notion:
 
 - voit ensemble la notion + exemple
 - exo à pratiquer
 - correction ensemble
+
+---
 
 2 projets:
 
@@ -231,9 +256,9 @@ https://fr.vuejs.org/guide/components/props.html#prop-passing-details
 Un composant peut émettre des événements personnalisés directement à partir du template (par exemple, dans un gestionnaire d'événement v-on) à l'aide de la méthode native $emit :
 
 ```js
-const emit = defineEmits(['change', 'delete'])
+const emit = defineEmits(['change', 'submit'])
 function buttonClick() {
-  emit('submit')
+  emit('change')
   // SI JE VEUX ENVOYER DES PARAMETRES DEDANS LORS DE EMIT
   emit('submit', 'hello') // ou emit('submit', {...})
 }
@@ -243,8 +268,10 @@ https://fr.vuejs.org/guide/components/events.html
 
 #### Exo: shopping list
 
+On va multiplier la possibilité de générer plusieurs listes de cours, dans une famille chacun peut avoir sa liste ;)
+
 - Mettre la partie formulaire dans une component: on aura besoin de props, emit et v-model
-- Ajouter 2 shopping list à la page d'index :
-  - chaque shopping list correspondra à un membre de la famille `Tom`, `Marc` et `lea`: il faudra donc lui passer une props !
+- Ajouter 2 shopping list à la page d'accueil app.js :
+  - chaque shopping list correspondra à un membre de la famille `Tom`, `Marc` et `Lea`: il faudra donc lui passer une props !
   - Dupliquer le component dans app.js
   - le bouton high priority, n'est pas assez visible, on va le mettre en gras ! Super besoin de le faire une seule fois et non 3 fois
