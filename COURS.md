@@ -216,6 +216,8 @@ onMounted(() => {
 
 ## Component
 
+**- correction, cycle de vie du component, barré les items, creation de plusieurs listes**
+
 ### Création du component
 
 Dans le dossier /components
